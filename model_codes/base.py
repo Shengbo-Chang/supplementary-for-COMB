@@ -191,7 +191,7 @@ class Meta_OM:
         
         # self.update_accumed_ufun()
         
-    def _init_base(self, ufun, time_max, update_mode, SIGMA, compact_version, compact_gate):
+    def _init_base(self, ufun, time_max, SIGMA, compact_version, compact_gate):
         self.bids_history = []
         self.onehot_bids_history = None
         self.onehot_bids_history_origin = None
@@ -236,7 +236,6 @@ class Meta_OM:
                 _iii = _iii + 1
             _i = _i + 1
         self.num_values = _iii # the lenth of flatten evaluations
-        self.update_mode = update_mode
         self.update = self._first_update_func
         self.likelihood_func = self._first_likelihood_func
         
@@ -385,77 +384,6 @@ class Meta_OM:
         likelihood = (1 / (sigma * np.sqrt(2 * np.pi))) * np.exp(-(delta * delta) / (2 * sigma * sigma))
         return likelihood
 
-# methods
-
-
-class Regression_OM(Meta_OM):
-    compact_version = 'Moving'
-    
-    @likelihood_none_zero
-    def _likelihood_func(self, ufuns):
-        
-        sigma = self.SIGMA
-        # print(partial_ufuns)
-        num_ufuns = ufuns.shape[0]
-        bids_till_now = self.onehot_bids_history #one-hot coded
-        num_bids = bids_till_now.shape[0]
-        bids_till_now_expand = bids_till_now.repeat(num_ufuns, axis = 0).reshape([num_bids, num_ufuns, -1])
-        bids_utilities = (bids_till_now_expand * ufuns).sum(axis = -1) #axis-0: bids; axis-1: utility of different hyppothesis
-        ufuns_mean = bids_utilities.mean(axis = 0)
-        ufuns_diff = bids_utilities - ufuns_mean.reshape([1, -1])
-        time_mean = self.time_sequence.mean()
-        time_diff = (self.time_sequence - time_mean).reshape([-1, 1])
-
-        BD = np.square(ufuns_diff).sum(axis = 0)
-        
-        B1 = (ufuns_diff * time_diff).sum(axis = 0) / BD
-
-        B1[np.where(BD == 0)] = 0
-
-        B0 = ufuns_mean - B1 * time_mean
-        B0 = B0 - 0.95
-        
-        B1[np.where(B1 <= 0)] = 0
-        B0[np.where(B0 >= 0)] = 0
-
-        likelihood = 1 / (sigma * np.sqrt(2*np.pi)) * np.exp(-(B1**2 + B0**2) / (2 * sigma * sigma))
-        return likelihood
-
-
-
-class Expectation_OM(Meta_OM):
-    
-    @likelihood_none_zero
-    def _likelihood_func(self, ufuns):
-        sigma = self.SIGMA
-        bids_till_now = self.onehot_bids_history
-        previous_expected_bid = bids_till_now[:-1, :].mean(axis=0)
-        newest_bid = bids_till_now[-1, :]
-
-        diff_bid = newest_bid - previous_expected_bid
-        CIM_single_step = (ufuns * diff_bid).sum(axis = 1)
-
-        CIM_single_step[np.where((-0.1 <= CIM_single_step) & (CIM_single_step <= 0))] = 0
-        likelihood_single = 1 / (sigma * np.sqrt(2*np.pi)) * np.exp(-(CIM_single_step * CIM_single_step) / (2 * sigma * sigma))
-        return likelihood_single
-    
-class Stepwise_OM(Meta_OM):
-    
-    @likelihood_none_zero
-    def _likelihood_func(self, ufuns):
-        sigma = self.SIGMA
-        bids_till_now = self.onehot_bids_history
-
-        previous_bid = bids_till_now[-2, :]
-        newest_bid = bids_till_now[-1, :]
-
-        diff_bid = newest_bid - previous_bid
-        SIM_single_step = (ufuns * diff_bid).sum(axis = 1)
-
-        # SIM_single_step[np.where((-0.2 <= SIM_single_step) & (SIM_single_step <= 0))] = 0
-        SIM_single_step[np.where((-0.1 <= SIM_single_step) & (SIM_single_step <= 0))] = 0
-        likelihood_single = 1 / (sigma * np.sqrt(2 * np.pi)) * np.exp(-(SIM_single_step * SIM_single_step) / (2 * sigma * sigma))
-        return likelihood_single
 
 
 class Specific_OM(Meta_OM):
