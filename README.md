@@ -31,5 +31,6 @@ Each file contains the accuracies of the model (indicated with the Level 1 folde
 
 ## Additional files
 recorded bidding traces. 
+Code for the three proposed COMB model
 
 
