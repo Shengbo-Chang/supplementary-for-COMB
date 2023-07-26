@@ -1,7 +1,5 @@
-python3.9
-Negmas0.92
-numpy
-itertools
-functools
+pytho==3.9
+negmas==0.92
+numpy==1.22.4
 
 
