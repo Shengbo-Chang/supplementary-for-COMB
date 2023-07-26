@@ -385,6 +385,9 @@ class Meta_OM:
         likelihood = (1 / (sigma * np.sqrt(2 * np.pi))) * np.exp(-(delta * delta) / (2 * sigma * sigma))
         return likelihood
 
+# methods
+
+
 class Regression_OM(Meta_OM):
     compact_version = 'Moving'
     
@@ -418,7 +421,7 @@ class Regression_OM(Meta_OM):
         likelihood = 1 / (sigma * np.sqrt(2*np.pi)) * np.exp(-(B1**2 + B0**2) / (2 * sigma * sigma))
         return likelihood
 
-# methods
+
 
 class Expectation_OM(Meta_OM):
     
