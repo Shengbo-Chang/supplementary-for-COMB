@@ -25,7 +25,7 @@ Supplementary data for paper titled ***COMB: Scalable Concession-driven Opponent
 4. **AgentK - Yushu**: Corresponding ANAC agents.
 
 
-## Level 4 files: Accuricies
+## Level 4 files: result files
 Named by: {domain_name}_{Opposition Feature}{Distribution Feature}.json
 
 
