@@ -3,4 +3,4 @@ Supplementary raw data for paper under review: COMB: Scalable Concession-driven 
 
 ## Level 1 Folders: 
 
-<i><b>accuracy_baselines: 
+<em>accuracy_baselines: include accuracy for <i>CUHKagent Value Model and <i>HardheadedFrequencyModel
