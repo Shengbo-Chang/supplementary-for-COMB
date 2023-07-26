@@ -1,0 +1,7 @@
+python3.9
+Negmas0.92
+numpy
+itertools
+functools
+
+
