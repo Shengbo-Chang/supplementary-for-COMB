@@ -30,7 +30,7 @@ Named by: {domain_name}_{Opposition Feature}{Distribution Feature}.json.
 Each file contains the accuracies of the model (indicated with the Level 1 folder name) on the domain (indicated with the file name) against the opponent agent (indicated with the Levels 2 and 3 folder name).
 
 ## Additional files
-recorded bidding traces. 
+recorded bidding traces.  
 Code for the three proposed COMB model
 
 
