@@ -1,4 +1,4 @@
-Supplementary data for paper titled ***COMB: Scalable Concession-driven Opponent Models using Bayesian Learning for Preference Learning in Bilateral Multi-issue Automated Negotiation***
+Supplementary data for paper titled ***COMB: Scalable Concession-driven Opponent Models using Bayesian Learning for Preference Learning in Bilateral Multi-issue Automated Negotiation*** 
 
 ## Level 1 Folders: Methods
 
@@ -26,7 +26,8 @@ Supplementary data for paper titled ***COMB: Scalable Concession-driven Opponent
 
 
 ## Level 4 files: result files
-Named by: {domain_name}_{Opposition Feature}{Distribution Feature}.json
+Named by: {domain_name}_{Opposition Feature}{Distribution Feature}.json.  
+Each file contains the accuracies of the model (indicated with the Level 1 folder name) on the domain (indicated with the file name) against the opponent agent (indicated with the Levels 2 and 3 folder name).
 
 
 
