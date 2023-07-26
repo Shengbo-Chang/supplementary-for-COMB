@@ -1,22 +1,33 @@
 # raw-data-for-comb-testing
-Supplementary raw data for paper under review: COMB: Scalable Concession-driven Opponent Models using Bayesian Learning for Preference Learning in Bilateral Multi-issue Automated Negotiation
+Supplementary raw data for paper: COMB: Scalable Concession-driven Opponent Models using Bayesian Learning for Preference Learning in Bilateral Multi-issue Automated Negotiation
 
 ## Level 1 Folders: Methods
 
-1. **SOTA**: Accuracy of <i>CUHKagent Value Model</i> and <i>Hardheaded Frequency Model</i>. In one file, the first and second colomns are datas of CUHK and Hard, respectively.  
-5. **Existing_Bayesian**: Accuracy for proposed <i>Stepwise</i>,  <i>Regression</i>, and <i>Expectation</i> methods. Each methods in a seperate folder.  
-2. **COMB/Stepwise**: Accuracy of proposed COMB models <i>Stepwise</i>,  <i>Regression</i>, and <i>Expectation</i> methods. Each methods in a seperate folder.  
-3. **COMB/Regression**: Accuracy of proposed COMB models <i>Stepwise</i>,  <i>Regression</i>, and <i>Expectation</i> methods. Each methods in a seperate folder.  
-4. **COMB/Expectation**: Accuracy of proposed COMB models <i>Stepwise</i>,  <i>Regression</i>, and <i>Expectation</i> methods. Each methods in a seperate folder.  
+1. **SOTA**: <i>CUHKagent Value Model</i> and <i>Hardheaded Frequency Model</i>. In files of this folder, the first and second colomns are datas of CUHK and Hard, respectively.  
+5. **Existing_Bayesian/Specific**: the exsiting bayesian model applying the <i>Specific Bidding Utility</i> likelihood function.  
+5. **Existing_Bayesian/Stepwise**: the exsiting bayesian model applying the <i>Stepwise Concession</i> likelihood function.  
+2. **COMB/Specific**: the proposed COMB model applying the <i>Specific Bidding Utility</i> likelihood function.
+2. **COMB/Stepwise**: the proposed COMB model applying the <i>Stepwise Concession</i> likelihood function.
+3. **COMB/Regression**: the proposed COMB model applying the <i>Linear Regression</i> likelihood function.  
+4. **COMB/Expectation**: the proposed COMB model applying the <i>Expectation Concession</i> likelihood function.   
 
-6. **bidding_trace**: recorded bidding traces for varios opponent agents<br>
 
 ## Level 2 Folders: Opponent category
 
-<em>ANAC</em>: Accuracy for ANAC agents.<br>
-<em>noise_0</em>: Accuracy for basic agents with 0 noise.<br>
-<em>noise_0.005</em>: Accuracy for basic agents wth 0.005 noise.<br>
+1. **ANAC**: ANAC agents.  
+2. **noise_0**: basic agents with 0 noise.  
+3. **noise_0.005**: basic agents wth 0.005 noise.  
 
-## Level 3 Folders: Opponent category
+## Level 3 Folders: Opponent Name
+
+1. **Time0.1-10**: Time-dependent agents with parameter equals to 0.1, 1, 2, 5, and 10, respectively.  
+2. **Offset0.7-0.9**: Offset agents with parameter equals to 0.7, 0.8, and 0.9, respectively.  
+3. **Reserve0.3-0.9**: Reservation agents with parameter equals to 0.3, 0.5, 0.7 and 0.9, respectively.
+4. **AgentK - Yushu**: Corresponding ANAC agents.
+
+
+## Level 4 files: Accuricies
+Named by: {domain_name}_{Opposition Feature}{Distribution Feature}.json
+
 
 
