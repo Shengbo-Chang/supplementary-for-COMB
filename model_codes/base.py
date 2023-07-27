@@ -127,7 +127,6 @@ class evaluation_space:
         self.initial_h_probs = Ps.copy()
     
     def Second_decopuled_EHS_mean(self):
-        # this version: the hypo-space is not cartersian product, the lengths are different from each other.
         num_values =  self.num_values
         Hs = np.linspace(0, 1, self.num_hypothesis).reshape([1,-1]).repeat(axis=0, repeats = num_values).astype(NUMPY_TYPE)
         Ps = np.ones_like(Hs)
