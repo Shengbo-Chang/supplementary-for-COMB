@@ -15,5 +15,5 @@ class OM(Meta_OM):
         CIM_single_step = (ufuns * diff_bid).sum(axis = 1)
 
         CIM_single_step[np.where(CIM_single_step <= 0)] = 0
-        likelihood_single = 1 / (sigma * np.sqrt(2*np.pi)) * np.exp(-(CIM_single_step * CIM_single_step) / (2 * sigma * sigma))
+        likelihood_single = 1 / (sigma * np.sqrt(2*np.pi)) * np.exp(-(CIM_single_step ** 2) / (2 * sigma * sigma))
         return likelihood_single
