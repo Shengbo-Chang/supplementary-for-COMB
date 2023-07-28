@@ -16,8 +16,8 @@ class OM(Meta_OM):
         diff_bid = newest_bid - previous_bid
         SIM_single_step = (ufuns * diff_bid).sum(axis = 1)
 
-        # SIM_single_step[np.where((-0.1 <= SIM_single_step) & (SIM_single_step <= 0))] = 0
-        SIM_single_step[np.where(SIM_single_step <= 0)] = 0
+        SIM_single_step[np.where((-0.1 <= SIM_single_step) & (SIM_single_step <= 0))] = 0
+        # SIM_single_step[np.where(SIM_single_step <= 0)] = 0
         likelihood_single = 1 / (sigma * np.sqrt(2 * np.pi)) * np.exp(-(SIM_single_step ** 2) / (2 * sigma * sigma))
         return likelihood_single
 
